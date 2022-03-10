@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/drawable/ic_baseline_bookmark_24.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/drawable/ic_baseline_flash_off_24.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/drawable/ic_baseline_flash_on_24.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/drawable/ic_baseline_radio_button_checked_24.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/drawable/placeholder.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/layout/document_item.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/layout/empty_state.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/layout/fragment_crop.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/layout/fragment_documents.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/layout/fragment_home.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/layout/fragment_text_recognize.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/LENOVO-PC/AndroidStudioProjects/Ocr/app/src/main/res/layout/fragment_zoom.xml" value="0.1793478260869565" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

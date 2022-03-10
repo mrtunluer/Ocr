@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ocr</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="permission_warning">In order to use the application, you must accept the necessary permissions.</string>
+    <string name="document_not_found">Document Not Found</string>
+    <string name="empty_description">Please Scan Document</string>
+</resources>

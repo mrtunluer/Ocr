@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    android:background="@color/dark"
+    android:orientation="horizontal">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/documentImg"
+        app:riv_corner_radius="8dp"
+        android:layout_margin="6dp"
+        android:layout_width="140dp"
+        android:layout_height="160dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:ellipsize="end"
+            android:id="@+id/titleTxt"
+            android:layout_marginTop="10dp"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/scanTxt"
+            android:ellipsize="end"
+            android:maxLines="6"
+            android:textColor="@color/app_bar_text"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textStyle="normal" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

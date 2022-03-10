@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.yks.ocr.ui.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_cropFragment"
+            app:destination="@id/cropFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_savedDocumentsFragment"
+            app:destination="@id/documentsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cropFragment"
+        android:name="com.yks.ocr.ui.view.CropFragment"
+        android:label="fragment_crop"
+        tools:layout="@layout/fragment_crop" >
+        <action
+            android:id="@+id/action_cropFragment_to_textRecognizeFragment"
+            app:destination="@id/textRecognizeFragment"
+            app:popUpTo="@id/homeFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/textRecognizeFragment"
+        android:name="com.yks.ocr.ui.view.TextRecognizeFragment"
+        android:label="fragment_text_recognize"
+        tools:layout="@layout/fragment_text_recognize" >
+        <action
+            android:id="@+id/action_textRecognizeFragment_to_zoomFragment"
+            app:destination="@id/zoomFragment" />
+        <action
+            android:id="@+id/action_textRecognizeFragment_to_documentsFragment"
+            app:destination="@id/documentsFragment"
+            app:popUpTo="@id/documentsFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/documentsFragment"
+        android:name="com.yks.ocr.ui.view.DocumentsFragment"
+        android:label="fragment_saved_documents"
+        tools:layout="@layout/fragment_documents" >
+
+        <action
+            android:id="@+id/action_documentsFragment_to_textRecognizeFragment"
+            app:destination="@id/textRecognizeFragment" />
+        <argument
+            android:name="document"
+            app:argType="com.yks.ocr.model.Document"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/zoomFragment"
+        android:name="com.yks.ocr.ui.view.ZoomFragment"
+        android:label="fragment_zoom"
+        tools:layout="@layout/fragment_zoom" />
+
+</navigation>
