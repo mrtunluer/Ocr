@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
@@ -51,7 +52,7 @@ class TextRecognizeFragment : Fragment() {
 
         val document = args.document
         if (document == null){
-            viewModel.processImage(setInputImage(), recognizer, binding.scanTxt, requireContext())
+            processImage(setInputImage(), recognizer)
             binding.scanImg.setImageBitmap(Ocr.bitmap)
         }else{
             getData(document)
@@ -74,6 +75,15 @@ class TextRecognizeFragment : Fragment() {
             }
         }
 
+    }
+
+    private fun processImage(inputImage: InputImage, recognizer: TextRecognizer){
+        viewModel.processImage(inputImage, recognizer)
+            .addOnSuccessListener { visionText: Text ->
+                binding.scanTxt.text = visionText.text
+            }.addOnFailureListener { e: Exception ->
+                requireContext().toast(e.message.toString())
+            }
     }
 
     private fun updateDoc(fileName: String, id: Int, title: String, scanned: String, time: Long){

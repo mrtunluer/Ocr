@@ -94,14 +94,8 @@ class DocumentViewModel @Inject constructor(
         }
     }
 
-    fun processImage(inputImage: InputImage, recognizer: TextRecognizer, scanTxt: TextView, context: Context) {
+    fun processImage(inputImage: InputImage, recognizer: TextRecognizer) =
         recognizer.process(inputImage)
-            .addOnSuccessListener { visionText: Text ->
-                scanTxt.text = visionText.text
-            }
-            .addOnFailureListener { e: Exception ->
-                context.toast(e.message.toString())
-            }
-    }
+
 
 }
