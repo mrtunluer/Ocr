@@ -30,8 +30,13 @@ class DocumentViewModel @Inject constructor(
     private val _state = MutableStateFlow<LoadState>(LoadState.Loading)
     val state = _state.asStateFlow()
 
-    var scannedText = MutableLiveData<Text>()
-    var scannedException = MutableLiveData<Exception>()
+    val scannedText: MutableLiveData<Text> by lazy {
+        MutableLiveData<Text>()
+    }
+
+    val scannedException: MutableLiveData<Exception> by lazy {
+        MutableLiveData<Exception>()
+    }
 
     fun getAllDocs() {
         viewModelScope.launch {
