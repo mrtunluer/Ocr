@@ -2,9 +2,11 @@ package com.yks.ocr.ui.viewmodel
 
 import android.content.Context
 import android.graphics.Bitmap
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognizer
 import com.yks.ocr.model.Document
 import com.yks.ocr.repo.DocumentRepository
@@ -17,6 +19,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import java.io.IOException
+import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,6 +29,9 @@ class DocumentViewModel @Inject constructor(
 
     private val _state = MutableStateFlow<LoadState>(LoadState.Loading)
     val state = _state.asStateFlow()
+
+    var scannedText = MutableLiveData<Text>()
+    var scannedException = MutableLiveData<Exception>()
 
     fun getAllDocs() {
         viewModelScope.launch {
@@ -93,7 +99,13 @@ class DocumentViewModel @Inject constructor(
     }
 
     fun processImage(inputImage: InputImage, recognizer: TextRecognizer) =
-        recognizer.process(inputImage)
+        recognizer.process(inputImage).addOnSuccessListener { text ->
+            text?.let {
+                scannedText.value = it
+            }
+        }.addOnFailureListener { exception ->
+            scannedException.value = exception
+        }
 
 
 }
