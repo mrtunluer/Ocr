@@ -2,11 +2,9 @@ package com.yks.ocr.ui.viewmodel
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.mlkit.vision.common.InputImage
-import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognizer
 import com.yks.ocr.model.Document
 import com.yks.ocr.repo.DocumentRepository
