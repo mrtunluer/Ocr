@@ -18,7 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.yks.ocr.R
 import com.yks.ocr.app.Ocr
 import com.yks.ocr.databinding.FragmentHomeBinding
-import com.yks.ocr.utils.Constants
+import com.yks.ocr.utils.Constants.PERMISSIONS
 import com.yks.ocr.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
@@ -34,6 +34,7 @@ class HomeFragment : Fragment(), View.OnTouchListener{
     private lateinit var scaleGestureDetector: ScaleGestureDetector
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
     private lateinit var orientationEventListener: OrientationEventListener
+    private var isGrantedReadExternalStorage = false
 
     private val pickImageLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
@@ -77,7 +78,10 @@ class HomeFragment : Fragment(), View.OnTouchListener{
         }
 
         binding.galleryImg.setOnClickListener {
-            pickImageLauncher.launch("image/*")
+            if (isGrantedReadExternalStorage)
+                pickImageLauncher.launch("image/*")
+            else
+                requireContext().toast(getString(R.string.permission_warning))
         }
 
         binding.flashImg.setOnClickListener {
@@ -160,8 +164,10 @@ class HomeFragment : Fragment(), View.OnTouchListener{
             else requireContext().toast(getString(R.string.permission_warning))
             if (permissions[Manifest.permission.READ_EXTERNAL_STORAGE] == false)
                 requireContext().toast(getString(R.string.permission_warning))
+            else
+                isGrantedReadExternalStorage = true
         }
-        permissionLauncher.launch(Constants.PERMISSIONS)
+        permissionLauncher.launch(PERMISSIONS)
     }
 
     private fun startCamera(){
