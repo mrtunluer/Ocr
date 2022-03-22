@@ -32,8 +32,8 @@ class HomeFragment : Fragment(), View.OnTouchListener{
     private lateinit var imageCapture: ImageCapture
     private lateinit var camera: Camera
     private lateinit var scaleGestureDetector: ScaleGestureDetector
-    private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
     private lateinit var orientationEventListener: OrientationEventListener
+    private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
     private var isGrantedReadExternalStorage = false
 
     private val pickImageLauncher = registerForActivityResult(
