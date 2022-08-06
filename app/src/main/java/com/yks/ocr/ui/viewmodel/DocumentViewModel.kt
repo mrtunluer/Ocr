@@ -13,6 +13,7 @@ import com.yks.ocr.repo.DocumentRepository
 import com.yks.ocr.utils.LoadState
 import com.yks.ocr.utils.toast
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
@@ -39,9 +40,9 @@ class DocumentViewModel @Inject constructor(
     }
 
     fun getAllDocs() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             documentRepo.getAllDocs().distinctUntilChanged().collect {docs ->
-                if (!docs.isNullOrEmpty()) {
+                if (docs.isNotEmpty()) {
                     _state.value = LoadState.Success(docs)
                 } else {
                     _state.value = LoadState.Empty
@@ -51,7 +52,7 @@ class DocumentViewModel @Inject constructor(
     }
 
     fun insertDoc(fileName: String, title: String, scanned: String, time: Long) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val doc = Document(
                 fileName =fileName,
                 title = title,
@@ -63,7 +64,7 @@ class DocumentViewModel @Inject constructor(
     }
 
     fun updateDoc(fileName: String, id: Int, title: String, scanned: String, time: Long) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val doc = Document(
                 fileName = fileName,
                 id = id,
@@ -76,7 +77,9 @@ class DocumentViewModel @Inject constructor(
     }
 
     fun deleteDoc(id: Int) {
-        viewModelScope.launch { documentRepo.deleteDoc(id) }
+        viewModelScope.launch(Dispatchers.IO) {
+            documentRepo.deleteDoc(id)
+        }
     }
 
     fun saveImgToInternalStorage(bitmap: Bitmap, context: Context, fileName: String): Boolean{
@@ -111,6 +114,5 @@ class DocumentViewModel @Inject constructor(
         }.addOnFailureListener { exception ->
             scannedException.value = exception
         }
-
 
 }
